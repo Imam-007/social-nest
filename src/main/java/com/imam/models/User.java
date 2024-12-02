@@ -1,7 +1,14 @@
 package com.imam.models;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "users")
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer userId;
     private String firstName;
     private String lastName;
     private String email;
@@ -10,11 +17,20 @@ public class User {
     public User() {
     }
 
-    public User(String firstName, String lastName, String email, String password) {
+    public User(Integer userId, String firstName, String lastName, String email, String password) {
+        this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getFirstName() {
